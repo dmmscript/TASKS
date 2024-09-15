@@ -1,4 +1,10 @@
-import sqlite3
+import sys
+import os
+
+# Adiciona o caminho da pasta 'DATABASE' ao sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'DATABASE')))
+
+from DBtask2 import BancoDeDados
 
 class BancoDeDados:
     def __init__(self,nome_banco="cinema.db"):

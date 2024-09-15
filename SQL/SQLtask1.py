@@ -1,14 +1,10 @@
-import sqlite3
+import sys
+import os
 
-class BancoDeDados:
-    def __init__(self,nome_banco="biblioteca.db"):
-        self.nome_banco = nome_banco
-        self.conexao = sqlite3.connect(self.nome_banco)
-        self.cursor = self.conexao.cursor()
+# Adiciona o caminho da pasta 'DATABASE' ao sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'DATABASE')))
 
-    def fechar(self):
-        if self.conexao:
-            self.conexao.close()
+from DBtask1 import BancoDeDados
 
 class Livro:
     def __init__(self,banco):
@@ -72,6 +68,9 @@ class Livro:
         self.banco.cursor.execute('DELETE FROM livros')
         self.banco.conexao.commit()
         print('Registros zerados.')
+
+
+# CÓDIGO PRINCIPAL
 
 banco = BancoDeDados()
 livro = Livro(banco)
