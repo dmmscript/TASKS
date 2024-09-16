@@ -32,7 +32,6 @@ class Livro:
     def listar_todos(self):
         self.banco.cursor.execute('SELECT * FROM livros')
         livros = self.banco.cursor.fetchall()
-
         if livros:
             for x in livros:
                 print(f"ID:{x[0]}, titulo:{x[1]}, autor:{x[2]}")
@@ -42,12 +41,11 @@ class Livro:
     def buscar_por_id(self, livro_id):
         #print(f"Tipo de livro_id: {type(livro_id)}")  # Adicione esta linha para depuração
         self.banco.cursor.execute('SELECT * FROM livros WHERE id = ?', (livro_id,))
-        x = self.banco.cursor.fetchone()
-        if x:
+        livro_id = self.banco.cursor.fetchone()
+        if livro_id:
           print(f"ID:{x[0]}, Título:{x[1]}, Autor:{x[2]}")
         else: 
             print(f"Registro {livro_id} inexistente.")
-
 
     def atualizar(self,livro_id,titulo,autor):
         self.banco.cursor.execute('''
@@ -62,7 +60,6 @@ class Livro:
         self.banco.cursor.execute('DELETE FROM livros WHERE id = ?',(livro_id,))
         self.banco.conexao.commit()
         print("Eliminado com sucesso.")
-        print(f"Tipo de livro_id: {type(livro_id)}")
 
     def zerar_bd(self):
         self.banco.cursor.execute('DELETE FROM livros')
@@ -91,5 +88,5 @@ livro = Livro(banco)
 
 #=======================================================================================
 
-livro.listar_todos()
+#livro.listar_todos()
 
