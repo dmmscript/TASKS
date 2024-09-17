@@ -61,7 +61,7 @@ class Filme:
         print("Removido com sucesso.")
 
     def reset(self):
-        self.banco.cursor.execute('DELETE FROM filmes')
+        self.banco.cursor.execute("DELETE FROM sqlite_sequence WHERE name = 'filmes'")
         self.banco.conexao.commit()
         print("Resetado com sucesso.")
 

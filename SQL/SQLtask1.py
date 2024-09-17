@@ -62,7 +62,7 @@ class Livro:
         print("Eliminado com sucesso.")
 
     def zerar_bd(self):
-        self.banco.cursor.execute('DELETE FROM livros')
+        self.banco.cursor.execute("DELETE FROM sqlite_sequence WHERE name = 'livros'")
         self.banco.conexao.commit()
         print('Registros zerados.')
 

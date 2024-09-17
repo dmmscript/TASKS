@@ -73,9 +73,9 @@ Este comando confirma as manipulações pretendidas anteriormente
         print("Eliminado com sucesso.")
 
     def remover_todos(self):
-        self.banco.cursor.execute('DELETE FROM pessoas')
+        self.banco.cursor.execute("DELETE FROM sqlite_sequence WHERE name = 'pessoas'")
         self.banco.conexao.commit()
-        print("Todos os registros foram eliminados com sucesso")
+        print("Todos os registros foram eliminados com sucesso.")
 
 banco = BancoDeDados()
 pessoa = Pessoa(banco)
@@ -83,10 +83,13 @@ pessoa = Pessoa(banco)
 #pessoa.adicionar("Danielly","16988064132")
 #pessoa.adicionar("João","16997889356")
 
-#pessoa.atualizar(1,"Danielly","01988064132")
+#pessoa.atualizar(int(82),"Danielly","01988064132")
 
 #pessoa.adicionar("Dani","876867")
 #pessoa.adicionar("Joao","727927")
 #pessoa.adicionar("Lais","4747878")
 
 pessoa.listar_todos()
+#pessoa.remover_todos()
+#pessoa.remover(int(82))
+ 
