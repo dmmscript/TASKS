@@ -1,3 +1,4 @@
 uploading...
 
 SQLtask2 - será que nas outras tasks os IDs também não estavam resetando? é o tal do CACHE??
+Resetei com "DELETE FROM sqlite_sequence WHERE name = 'nome_da_tabela'"
